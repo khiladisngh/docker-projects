@@ -212,7 +212,32 @@ Once Docker is installed and the Docker daemon (or Docker Desktop) is running, y
 As you start working on Docker projects and later Kubernetes, keeping your files organized is crucial. A well-structured directory setup will make it easier to manage Dockerfiles, application code, Kubernetes manifests, and notes.
 
 Here’s a suggested structure we discussed earlier, which you can create as you go:
-~/docker-kubernetes-course/              # Main folder for all course-related materials├── docker-projects/                   # For your Docker-specific assignments and small projects│   ├── project-1-simple-python-app/   # Example: A basic Python app to containerize│   │   ├── app/                       # Your Python application code might go here│   │   │   └── main.py│   │   └── Dockerfile                 # Instructions to build the Docker image for this app│   ├── project-2-multi-container-app/ # Example: An app with multiple services│   │   ├── webapp/│   │   │   ├── app/│   │   │   └── Dockerfile│   │   ├── database/                  # Could have its own Dockerfile or use an official image│   │   └── docker-compose.yml         # For defining and running multi-container apps (upcoming lesson)│   └── notes/                         # General notes or cheatsheets related to Docker│       └── docker_cheatsheet.md├── kubernetes-manifests/              # For your Kubernetes configuration files (YAML manifests)│   ├── project-1-simple-python-app/│   │   ├── deployment.yaml│   │   └── service.yaml│   └── notes/│       └── kubectl_cheatsheet.md└── course-notes/                      # General notes you take during the course modules├── module-1-docker/└── module-2-kubernetes/* For now, creating the main `docker-kubernetes-course` folder and the `docker-projects` subfolder is a good start. You created specific project folders like `my-python-app` within `docker-projects` as we progressed.
+```
+~/docker-kubernetes-course/              # Main folder for all course-related materials
+├── docker-projects/                     # For your Docker-specific assignments and small projects
+│   ├── project-1-simple-python-app/     # Example: A basic Python app to containerize
+│   │   ├── app/                         # Your Python application code might go here
+│   │   │   └── main.py
+│   │   └── Dockerfile                   # Instructions to build the Docker image for this app
+│   ├── project-2-multi-container-app/   # Example: An app with multiple services
+│   │   ├── webapp/
+│   │   │   ├── app/
+│   │   │   └── Dockerfile
+│   │   ├── database/                    # Could have its own Dockerfile or use an official image
+│   │   └── docker-compose.yml           # For defining and running multi-container apps
+│   └── notes/                           # General notes or cheatsheets related to Docker
+│       └── docker_cheatsheet.md
+├── kubernetes-manifests/                # For your Kubernetes configuration files (YAML manifests)
+│   ├── project-1-simple-python-app/
+│   │   ├── deployment.yaml
+│   │   └── service.yaml
+│   └── notes/
+│       └── kubectl_cheatsheet.md
+└── course-notes/                        # General notes you take during the course modules
+    ├── module-1-docker/
+    └── module-2-kubernetes/
+```
+* For now, creating the main `docker-kubernetes-course` folder and the `docker-projects` subfolder is a good start. You created specific project folders like `my-python-app` within `docker-projects` as we progressed.
 
 Having Docker installed and verified, along with a plan for organizing your work, sets a solid foundation for learning and experimenting with Docker and eventually Kubernetes.
 
