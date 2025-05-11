@@ -1,0 +1,35 @@
+
+# compose-example/docker-compose.yml
+version: '3.8' # Specifies the Compose file format version
+
+services:
+  # Web Application Service (Flask)
+  web:
+    build: ./webapp  # Tells Compose to build an image from the Dockerfile in the ./webapp directory
+    container_name: my-flask-app-compose # Optional: custom container name
+    ports:
+      - "5001:5000"   # Maps port 5001 on the host to port 5000 in the web container
+    volumes:
+      - ./webapp:/app # Bind mount: Maps ./webapp on the host to /app in the container for live code reloading
+                      # This assumes your Dockerfile's WORKDIR is /app and CMD runs python ./app.py
+    environment:
+      # You can set or override environment variables here
+      - FLASK_ENV=development # Example: Flask specific environment
+      # APP_VERSION and AUTHOR_NAME will be taken from the Dockerfile's ENV if not overridden here
+    depends_on:
+      - redis         # Tells Compose to start the 'redis' service before the 'web' service
+                      # Also makes 'redis' hostname available to 'web'
+
+  # Redis Service
+  redis:
+    image: "redis:alpine" # Uses the official Redis image (alpine variant for smaller size)
+    container_name: my-redis-db # Optional: custom container name
+    # By default, Redis listens on port 6379. We don't need to map this to the host
+    # unless we want to connect to Redis directly from the host machine.
+    # Our 'web' service will connect to 'redis' on port 6379 over the internal Docker network.
+    # For persistence of Redis data across `docker compose down` and `up`, you would add a volume:
+    # volumes:
+    #   - redis-data:/data
+# Optional: Define a top-level named volume for Redis persistence
+# volumes:
+#  redis-data:
