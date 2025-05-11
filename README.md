@@ -57,10 +57,11 @@ docker compose up -d --build
 Access the web application at `http://localhost:5001`.
 
 **To stop and remove containers:**
+(Assuming you are in the `compose-example` directory)
 ```sh
-cd compose-example
 docker compose down
 ```
+Note: If you have enabled data persistence for Redis by uncommenting the volume sections in the [`compose-example/docker-compose.yml`](compose-example/docker-compose.yml) file, use `docker compose down -v` to also remove the Redis data volume.
 
 ## Learning Notes (`notes`)
 
